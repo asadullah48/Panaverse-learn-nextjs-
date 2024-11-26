@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fetching Data on the Static Server
 
-## Getting Started
+First [read this official fetching data on the server documentation](https://beta.nextjs.org/docs/data-fetching/fundamentals#fetching-data-on-the-server)
 
-First, run the development server:
+Second [read this fetching static data](https://beta.nextjs.org/docs/data-fetching/fundamentals#static-and-dynamic-data-fetches)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Note that all components by default are Server Components. Server Components always fetch data on the server.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Third [about static data fetching](https://beta.nextjs.org/docs/data-fetching/fetching#static-data-fetching)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+By default, Next.js automatically does static fetches in Server Components. This means that the data will be fetched at build time, cached, and reused on each request. 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Note that when you refresh/reload the page again and again it always shows the same quotation. 
 
-## Learn More
+Fourth [read this article to review what you have learned about data fetching](https://dev.to/zenstack/a-deep-dive-into-next13-data-fetching-114n)
 
-To learn more about Next.js, take a look at the following resources:
+Fifth [watch this video](https://www.youtube.com/watch?v=JeaHyhcCVCE)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Note: 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Next.js extends the native Web fetch() API to support caching.
 
-## Deploy on Vercel
+fetch(`https://...`, { cache: 'force-cache' });
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+fetch(`https://...`, { cache: 'no-store' });
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+fetch(`https://...`, { next: { revalidate: false | 0 | number } } });
+
+The default behavior is fetch(https://..., { cache: 'force-cache' }).
