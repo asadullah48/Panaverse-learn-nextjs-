@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'], weight: ["400", "700"]})
+const inter = Inter({ subsets: ['latin'] w})
 
 async function getBlogs() {
   const res = await fetch(`https://cdn.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/entries?access_token=${process.env.CONTENTFUL_ACCESS_KEY}&content_type=blog`);
